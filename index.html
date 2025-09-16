@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartSDLC - AI-Enhanced Software Development Lifecycle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <h1>SmartSDLC</h1>
+                        <span class="tagline">AI-Enhanced Development</span>
+                    </div>
+                    <nav class="main-nav">
+                        <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+                        <button class="nav-btn" data-section="requirements">Requirements</button>
+                        <button class="nav-btn" data-section="code-generation">Code Gen</button>
+                        <button class="nav-btn" data-section="testing">Testing</button>
+                        <button class="nav-btn" data-section="bug-fixing">Bug Fixing</button>
+                        <button class="nav-btn" data-section="documentation">Docs</button>
+                        <button class="nav-btn" data-section="ai-chat">AI Chat</button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <div class="container">
+                    <div class="welcome-hero">
+                        <h2>Welcome to SmartSDLC</h2>
+                        <p>Your AI-powered companion for every phase of software development</p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card" data-navigate="requirements">
+                            <div class="feature-icon">📋</div>
+                            <h3>Requirements Analysis</h3>
+                            <p>Extract and structure requirements from PDFs using AI</p>
+                        </div>
+                        
+                        <div class="feature-card" data-navigate="code-generation">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Code Generation</h3>
+                            <p>Generate production-ready code from natural language</p>
+                        </div>
+                        
+                        <div class="feature-card" data-navigate="testing">
+                            <div class="feature-icon">🧪</div>
+                            <h3>Automated Testing</h3>
+                            <p>Create comprehensive test suites automatically</p>
+                        </div>
+                        
+                        <div class="feature-card" data-navigate="bug-fixing">
+                            <div class="feature-icon">🐛</div>
+                            <h3>Bug Analysis</h3>
+                            <p>Identify and fix bugs with AI assistance</p>
+                        </div>
+                        
+                        <div class="feature-card" data-navigate="documentation">
+                            <div class="feature-icon">📚</div>
+                            <h3>Documentation</h3>
+                            <p>Generate comprehensive documentation automatically</p>
+                        </div>
+                        
+                        <div class="feature-card" data-navigate="ai-chat">
+                            <div class="feature-icon">🤖</div>
+                            <h3>AI Assistant</h3>
+                            <p>Get guidance and support throughout your workflow</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Requirements Section -->
+            <section id="requirements" class="section">
+                <div class="container">
+                    <h2>Requirements Analysis</h2>
+                    
+                    <div class="section-grid">
+                        <div class="input-panel">
+                            <div class="upload-area">
+                                <input type="file" id="pdf-upload" accept=".pdf" class="hidden">
+                                <div class="upload-placeholder" onclick="document.getElementById('pdf-upload').click()">
+                                    <div class="upload-icon">📄</div>
+                                    <p>Click to upload PDF document</p>
+                                    <small>Supports PDF files up to 10MB</small>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn--primary generate-btn" id="generate-requirements">
+                                Extract Requirements
+                            </button>
+                        </div>
+                        
+                        <div class="output-panel">
+                            <h3>Extracted Requirements</h3>
+                            <div id="requirements-output" class="output-content">
+                                <p class="placeholder-text">Upload a PDF to extract structured requirements</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Code Generation Section -->
+            <section id="code-generation" class="section">
+                <div class="container">
+                    <h2>Code Generation</h2>
+                    
+                    <div class="section-grid">
+                        <div class="input-panel">
+                            <div class="form-group">
+                                <label class="form-label">Describe what you want to build:</label>
+                                <textarea id="code-prompt" class="form-control" rows="6" placeholder="e.g., Create a user authentication system with password hashing and session management"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Programming Language:</label>
+                                <select id="language-selector" class="form-control">
+                                    <option value="python">Python</option>
+                                    <option value="javascript">JavaScript</option>
+                                    <option value="java">Java</option>
+                                    <option value="csharp">C#</option>
+                                </select>
+                            </div>
+                            
+                            <button class="btn btn--primary generate-btn" id="generate-code">
+                                Generate Code
+                            </button>
+                        </div>
+                        
+                        <div class="output-panel">
+                            <div class="output-header">
+                                <h3>Generated Code</h3>
+                                <button class="btn btn--outline btn--sm" id="copy-code">Copy</button>
+                            </div>
+                            <div id="code-output" class="code-output">
+                                <p class="placeholder-text">Enter a prompt to generate code</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testing Section -->
+            <section id="testing" class="section">
+                <div class="container">
+                    <h2>Automated Testing</h2>
+                    
+                    <div class="section-grid">
+                        <div class="input-panel">
+                            <div class="form-group">
+                                <label class="form-label">Code to Test:</label>
+                                <textarea id="test-code" class="form-control" rows="8" placeholder="Paste your code here to generate tests"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Test Type:</label>
+                                <select id="test-type" class="form-control">
+                                    <option value="unit">Unit Tests</option>
+                                    <option value="integration">Integration Tests</option>
+                                    <option value="e2e">End-to-End Tests</option>
+                                </select>
+                            </div>
+                            
+                            <button class="btn btn--primary generate-btn" id="generate-tests">
+                                Generate Tests
+                            </button>
+                        </div>
+                        
+                        <div class="output-panel">
+                            <h3>Generated Tests</h3>
+                            <div id="test-output" class="code-output">
+                                <p class="placeholder-text">Provide code to generate comprehensive tests</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bug Fixing Section -->
+            <section id="bug-fixing" class="section">
+                <div class="container">
+                    <h2>Bug Analysis & Fixing</h2>
+                    
+                    <div class="section-grid">
+                        <div class="input-panel">
+                            <div class="form-group">
+                                <label class="form-label">Buggy Code:</label>
+                                <textarea id="buggy-code" class="form-control" rows="8" placeholder="Paste problematic code here for analysis"></textarea>
+                            </div>
+                            
+                            <button class="btn btn--primary generate-btn" id="analyze-bugs">
+                                Analyze Issues
+                            </button>
+                        </div>
+                        
+                        <div class="output-panel">
+                            <h3>Analysis Results</h3>
+                            <div id="bug-analysis" class="output-content">
+                                <p class="placeholder-text">Provide code to analyze for potential issues</p>
+                            </div>
+                            
+                            <h3>Fixed Code</h3>
+                            <div id="fixed-code" class="code-output">
+                                <p class="placeholder-text">Fixed version will appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Documentation Section -->
+            <section id="documentation" class="section">
+                <div class="container">
+                    <h2>Documentation Generation</h2>
+                    
+                    <div class="section-grid">
+                        <div class="input-panel">
+                            <div class="form-group">
+                                <label class="form-label">Code to Document:</label>
+                                <textarea id="doc-code" class="form-control" rows="8" placeholder="Paste your code here to generate documentation"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Documentation Type:</label>
+                                <select id="doc-type" class="form-control">
+                                    <option value="api">API Documentation</option>
+                                    <option value="readme">README</option>
+                                    <option value="comments">Inline Comments</option>
+                                    <option value="technical">Technical Specification</option>
+                                </select>
+                            </div>
+                            
+                            <button class="btn btn--primary generate-btn" id="generate-docs">
+                                Generate Documentation
+                            </button>
+                        </div>
+                        
+                        <div class="output-panel">
+                            <h3>Generated Documentation</h3>
+                            <div id="doc-output" class="output-content">
+                                <p class="placeholder-text">Provide code to generate comprehensive documentation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Chat Section -->
+            <section id="ai-chat" class="section">
+                <div class="container">
+                    <h2>AI Assistant</h2>
+                    
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="chat-message ai-message">
+                                <div class="message-avatar">🤖</div>
+                                <div class="message-content">
+                                    <p>Hello! I'm your SmartSDLC AI assistant. I can help you with requirements analysis, code generation, testing, debugging, and documentation. What would you like to work on today?</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-actions">
+                            <button class="quick-action-btn" data-prompt="Help me analyze requirements from a PDF">📋 Analyze Requirements</button>
+                            <button class="quick-action-btn" data-prompt="Generate code for user authentication">⚡ Generate Code</button>
+                            <button class="quick-action-btn" data-prompt="Create unit tests for my function">🧪 Create Tests</button>
+                            <button class="quick-action-btn" data-prompt="Help me debug this code">🐛 Debug Code</button>
+                        </div>
+                        
+                        <div class="chat-input-area">
+                            <input type="text" id="chat-input" class="form-control" placeholder="Ask me anything about your development workflow...">
+                            <button class="btn btn--primary" id="send-message">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay hidden">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Processing...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
